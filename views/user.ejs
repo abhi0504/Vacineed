@@ -1,15 +1,17 @@
 <%- include('partials/header') %>
 
 <div class="container mt-5">
-    <h2 style="text-align: left;">Token No. - 337</h2>
+    <div class="user_header">
+    <h2 style="text-align: left;" id="token_no" ><b>Token No. - 337</b></h2>
+    <h4 style="text-align: right;" class="col-10"><a href="firstPage.ejs">Back to homepage <i class="fas fa-arrow-right"></i></a></h4>
+    </div>
     <br>
-    <h1 style="text-align: center;">User Panel</h1>
-    <br><br>
+    <br>
+    <h1 style="text-align: center;">My dashboard</h1>
+    <br><br><br>
   
     <div class="row justify-content-center">
       <div class="col-10">
-        <!-- <div class="card"> -->
-          <!-- <div class="card-body"> -->
   
               <div class="userdetail">
                 <h4><b>Full name</b> : Lorem Ipsum</h4>
@@ -59,15 +61,35 @@
               <br>
               <br>
 
-              <button type="submit" id="emergency_request" class="btn btn-success btn-lg">Send Emergency Request</button>
-            </form>
-  
+              <!-- <button id="emergency_request" class="btn btn-success btn-lg">Send Emergency Request</button> -->
+
+
+              <script type="text/javascript">
+                function ShowHideDiv(btn) {
+                    var reason = document.getElementById("reason");
+                    reason.style.display ="block";
+                    var file= document.getElementById("doc");
+                    file.style.display="block"
+                }
+            </script>
+
+            <button id="emergency_request" value="request" class="btn btn-success btn-lg" onclick="ShowHideDiv(this)">Send emergency request</button>
+            <hr>
+            <div id="reason" style="display: none" class="form-group">
+                Give Reason
+                <textarea type="text" class="form-control" rows="5"></textarea>
+            </div>
+
+            <div id="doc" style="display: none" class="form-group">
+              Attach files
+              <input type="file" class="form-control" rows="5"/>
+          </div>
+
+          <button type="submit" class="btn btn-dark btn-lg">Submit</button>
+
           </div>
         </div>
       </div>
-  
-    <!-- </div>
-  </div> -->
   <br>
   <br>
   <br>
