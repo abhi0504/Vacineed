@@ -1,0 +1,87 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+    <h1 style="text-align: center;">Registration form</h1>
+  
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <div class="card">
+          <div class="card-body">
+  
+            <!-- Makes POST request to /login route -->
+            <form action="/register" method="POST">
+              <div class="form-group">
+                <label for="name">Your full name</label><br>
+                <input type="text" name="name" class="form-control" id="name"/>
+              </div>
+
+              <div class="form-group">
+                <label for="contact">Contact Number</label><br>
+                <input type="tel" name="Contact" class="form-control" id="Contact"  />
+              </div>
+
+              <div class="form-group">
+                <label for="Age">Age</label><br>
+                <input type="number" name="Age" class="form-control" id="Age" />
+              </div>
+
+              <div class="form-group">
+                <label for="blood_grp">Blood Group</label><br>
+                <input type="text" name="blood_grp" class="form-control" id="blood_grp" />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email ID</label><br>
+                <input type="email" name="email" class="form-control" id="username" />
+              </div>
+
+              <div class="form-group">
+                <label for="Password">Password</label><br>
+                <input type="text" name="Password" class="form-control" id="password" />
+              </div>
+
+              <div class="form-group">
+                <label for="address">Residential Address</label><br>
+                <input type="text" name="address" class="form-control" id="address" />
+              </div>
+
+              <div class="form-group">
+                <label for="Adhaar_no">Adhaar card number</label><br>
+                <input type="number" name="Adhaar_no" class="form-control" id="Adhaar_no"/>
+              </div>
+
+              <div class="form-group">
+                  <b><p>Do you have emergency to receive the vaccine?</p></b>
+                <input type="radio" name="emergency"  id="yes" />
+                <label for="yes">Yes</label><br>
+                <input type="radio" name="emergency" id="no"/>
+                <label for="no">No</label><br><br>
+                 <b><p>If yes, give reason </p></b>
+                 <textarea type="text" rows="4" name="reason" class="form-control" id="reason" placeholder=".." ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="disease">Any disease?</label><br>
+                <input type="text" name="disease" class="form-control" id="disease"/>
+              </div>
+              
+              <div class="form-group">
+                <label for="Signature">Signature</label><br>
+                <input type="file" name="Signature" class="form-control" id="Signature" />
+                <br>
+              </div>
+
+              <button type="submit" class="btn btn-dark">Register</button>
+            </form>
+  
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+
+<%- include('partials/footer') %>
