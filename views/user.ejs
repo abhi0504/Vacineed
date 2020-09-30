@@ -61,7 +61,31 @@
               <br>
               <br>
 
-              <button id="emergency_request" class="btn btn-success btn-lg">Send Emergency Request</button>
+              <!-- <button id="emergency_request" class="btn btn-success btn-lg">Send Emergency Request</button> -->
+
+
+              <script type="text/javascript">
+                function ShowHideDiv(btn) {
+                    var reason = document.getElementById("reason");
+                    reason.style.display ="block";
+                    var file= document.getElementById("doc");
+                    file.style.display="block"
+                }
+            </script>
+
+            <button id="emergency_request" value="request" class="btn btn-success btn-lg" onclick="ShowHideDiv(this)">Send emergency request</button>
+            <hr>
+            <div id="reason" style="display: none" class="form-group">
+                Give Reason
+                <textarea type="text" class="form-control" rows="5"></textarea>
+            </div>
+
+            <div id="doc" style="display: none" class="form-group">
+              Attach files
+              <input type="file" class="form-control" rows="5"/>
+          </div>
+
+
 
           </div>
         </div>

@@ -31,3 +31,7 @@
 button #emergency_request{
     padding: 5px;
 }
+
+#reason, #doc{
+    font-size: 15px;
+}
