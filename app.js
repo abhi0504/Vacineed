@@ -85,7 +85,7 @@ app.get("/home", function(req, res){
 });
 
 app.get("/register", function(req, res){
-  res.render("user");
+  res.render("register");
 });
 
 app.get("/auth/google",
