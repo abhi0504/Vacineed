@@ -48,12 +48,22 @@ const userSchema = new mongoose.Schema ({
   contact: Number
 });
 
+const stockSchema = new mongoose.Schema ({
+  available: Number,
+  need: Number,
+  upcoming: Number
+})
+
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
+stockSchema.plugin(passportLocalMongoose);
+stockSchema.plugin(findOrCreate);
 
 const User = new mongoose.model("User", userSchema);
+const Stock = new mongoose.model("Stock", stockSchema);
 
 passport.use(User.createStrategy());
+passport.use(Stock.createStrategy());
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -102,7 +112,15 @@ app.get("/home", function(req, res){
 });
 
 app.get("/stock", function(req, res){
-  res.render("stock");
+  Stock.find(function(err , stock){
+    if(err) {
+      console.log(err);
+    }
+    else{
+      console.log(stock);
+      res.render("stock" , {stock:stock});
+    }
+  })
 });
 
 app.get("/admin_list", function(req, res){
@@ -110,7 +128,15 @@ app.get("/admin_list", function(req, res){
 });
 
 app.get("/users_list", function(req, res){
-  res.render("users_list");
+  User.find(function(err , users){
+    if(err) {
+      console.log(err);
+    }
+    else{
+      console.log(users);
+      res.render("users_list" , {users:users});
+    }
+  })
 });
 
 app.get("/admin", function(req, res){

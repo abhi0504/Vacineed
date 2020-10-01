@@ -36,21 +36,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><a href="#">123</a></td>
-            <td>Doe</td>
-            <td>9999 9999 9999</td>
-          </tr>
-          <tr>
-            <td><a href="#">456</a></td>
-            <td>Moe</td>
-            <td>9999 9999 9999</td>
-          </tr>
-          <tr>
-            <td><a href="#">789</a></td>
-            <td>Dooley</td>
-            <td>9999 9999 9999</td>
-          </tr>
+          <% users.forEach(function(user){ %>
+            <tr>
+              <td><a href="#"><%=user._id%></a></td>
+              <td><%=user.name%></td>
+              <td><%=user.aadhar%></td>
+            </tr>
+         <% }) %>
+
         </tbody>
       </table>
 
