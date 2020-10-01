@@ -211,8 +211,13 @@ h1, h2, h3, h4, h5, h6 {
 #header {
   transition: all 0.5s;
   z-index: 997;
-  padding: 10px 0;
+  padding: 0px 0;
   background: #fff;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.153);
+  -moz-box-shadow:    5px 5px 5px rgba(0, 0, 0, 0.153);
+  box-shadow:         5px 5px 5px rgba(0, 0, 0, 0.153);
+  z-index:999;
+
 }
 
 #header.header-scrolled, #header.header-inner-pages {
@@ -220,23 +225,9 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* #header .logo {
-  font-size: 32px;
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-  font-weight: 700;
-  letter-spacing: 2px;
-  font-family: "Poppins", sans-serif;
-}
-
-#header .logo a {
-  color: #5a5af3;
-} */
-
 #header .logo img {
-  max-height: 100px;
-  padding-left: 6%;
+  max-height: 80px;
+  padding-left: -2%;
 
 }
 
@@ -750,80 +741,6 @@ section {
   background: #eeeef5;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
-
-#footer .footer-top {
-  padding: 60px 0 30px 0;
-  background: #fff;
-}
-
-#footer .footer-top .footer-contact {
-  margin-bottom: 30px;
-}
-
-#footer .footer-top .footer-contact h3 {
-  font-size: 28px;
-  margin: 0 0 10px 0;
-  padding: 0;
-  line-height: 1;
-  font-weight: 700;
-  color: #5a5af3;
-}
-
-#footer .footer-top .footer-contact p {
-  font-size: 14px;
-  line-height: 24px;
-  margin-bottom: 0;
-  font-family: "Raleway", sans-serif;
-  color: #777777;
-}
-
-#footer .footer-top h4 {
-  font-size: 16px;
-  font-weight: bold;
-  color: #434175;
-  position: relative;
-  padding-bottom: 12px;
-}
-
-#footer .footer-top .footer-links {
-  margin-bottom: 30px;
-}
-
-#footer .footer-top .footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#footer .footer-top .footer-links ul i {
-  padding-right: 2px;
-  color: #5a5af3;
-  font-size: 18px;
-  line-height: 1;
-}
-
-#footer .footer-top .footer-links ul li {
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-}
-
-#footer .footer-top .footer-links ul li:first-child {
-  padding-top: 0;
-}
-
-#footer .footer-top .footer-links ul a {
-  color: #777777;
-  transition: 0.3s;
-  display: inline-block;
-  line-height: 1;
-}
-
-#footer .footer-top .footer-links ul a:hover {
-  text-decoration: none;
-  color: #5a5af3;
-}
-
 
 #footer .credits {
   padding-top: 5px;
