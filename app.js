@@ -90,6 +90,11 @@ app.get("/firstPage", function(req, res){
   res.render("firstPage");
 });
 
+app.get("/admin", function(req, res){
+  res.render("admin");
+});
+
+
 app.get("/auth/google",
   passport.authenticate('google', { scope: ["profile"] })
 );
@@ -139,7 +144,7 @@ app.post("/register", function(req, res){
       res.redirect("/register");
     } else {
       passport.authenticate("local")(req, res, function(){
-        res.redirect("/secrets");
+       res.redirect("/secrets");
       });
     }
   });
@@ -158,7 +163,14 @@ app.post("/login", function(req, res){
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, function(){
-        res.redirect("/secrets");
+        if(req.body.username === "admin@123.com")
+        {
+          res.redirect("/admin")
+        }
+        else
+        {
+          res.redirect("/secrets");
+        }
       });
     }
   });
