@@ -101,6 +101,14 @@ app.get("/home", function(req, res){
   res.render("home");
 });
 
+app.get("/stock", function(req, res){
+  res.render("stock");
+});
+
+app.get("/admin_list", function(req, res){
+  res.render("admin_list");
+});
+
 app.get("/users_list", function(req, res){
   res.render("users_list");
 });
