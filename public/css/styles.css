@@ -581,9 +581,7 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
-.about{
-  background-color: white;
-}
+
 .about .content h2 {
   font-weight: 550;
   font-size: 30px;
@@ -620,12 +618,16 @@ section {
   margin-bottom: 0;
 }
 
+
+.slot{
+  background-color: rgba(251, 253, 251, 0.801);
+}
 /*--------------------------------------------------------------
 # Why Us
 --------------------------------------------------------------*/
 .why-us {
   padding-top: 0;
-  background-color: white;
+  background-color: rgba(251, 253, 251, 0.801);
 }
 
 .why-us .box {
