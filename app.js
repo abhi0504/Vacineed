@@ -42,7 +42,8 @@ const userSchema = new mongoose.Schema ({
   emergency: String,
   reason: String,
   disease: String,
-  link: String
+  link: String,
+  contact: Number
 });
 
 userSchema.plugin(passportLocalMongoose);
@@ -83,6 +84,10 @@ app.get("/", function(req, res){
 
 app.get("/home", function(req, res){
   res.render("home");
+});
+
+app.get("/firstPage", function(req, res){
+  res.render("firstPage");
 });
 
 app.get("/auth/google",
@@ -127,7 +132,8 @@ app.post("/register", function(req, res){
     emergency: req.body.emergency,
     reason: req.body.reason,
     disease: req.body.disease,
-    link: req.body.Signature}, req.body.password, function(err, user){
+    link: req.body.Signature,
+    contact: req.body.contact}, req.body.password, function(err, user){
     if (err) {
       console.log(err);
       res.redirect("/register");
