@@ -1,8 +1,11 @@
 <%- include('partials/header') %>
-    <link rel="stylesheet" href="css/admin-styles.css">
+    <link rel="stylesheet" href="css/admin.css">
     <h1>Admin Panel</h1>
+    <div class="div1">
+
+
     <h2>User information:</h2>
-    <table>
+    <table style="width:100%">
       <tr>
         <th>Name</th>
         <th>Address</th>
@@ -13,6 +16,7 @@
         <th>Email address</th>
         <th>Any other disease</th>
       </tr>
+      <tbody>
       <tr>
         <td>Madhav Kumar</td>
         <td>B-226, Street no 4, Shivaji Park, Delhi-110032</td>
@@ -43,14 +47,40 @@
         <td>madh0312@gmail.com</td>
         <td>BP</td>
       </tr>
+      </tbody>
     </table>
+    </div>
+
+    <div class="div2">
+
+
     <h2>Emergency Requests:</h2>
-    <table>
+    <table style="width:100%">
       <tr>
         <th>Token No.</th>
         <th>Reason</th>
         <th>Medical certificate</th>
+        <th>Allow or decline</th>
+      </tr>
+      <tr>
+        <td>123</td>
+        <td>Patient suffering from kidney diseases</td>
+        <td>image</td>
+        <td><button id="accept" value="request" class="btn btn-success btn-lg" onclick="ShowHideDiv(this)">Accept</button> <button id="decline" value="request" class="btn btn-success btn-lg" onclick="ShowHideDiv(this)">Decline</button></td>
+      </tr>
+      <tr>
+        <td>124</td>
+        <td>Patient having heart problem</td>
+        <td>image</td>
+        <td><button id="accept" value="request" class="btn btn-success btn-lg" onclick="ShowHideDiv(this)">Accept</button><button id="decline" value="request" class="btn btn-success btn-lg" onclick="ShowHideDiv(this)">Decline</button></td>
+      </tr>
+      <tr>
+        <td>125</td>
+        <td>Patient has high fever</td>
+        <td>image</td>
+        <td><button id="accept" value="request" class="btn btn-success btn-lg" onclick="ShowHideDiv(this)">Accept</button><button id="decline" value="request" class="btn btn-success btn-lg" onclick="ShowHideDiv(this)">Decline</button></td>
       </tr>
     </table>
+    </div>
 
 <%- include('partials/footer') %>
