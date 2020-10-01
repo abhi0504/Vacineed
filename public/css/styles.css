@@ -1,6 +1,6 @@
 
 body {
-  background-color: #E8ECEF;
+  background-color: #dbf0da;
 }
 
 .centered {
@@ -177,35 +177,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*--------------------------------------------------------------
-# Back to top button
---------------------------------------------------------------*/
-.back-to-top {
-  position: fixed;
-  display: none;
-  right: 15px;
-  bottom: 15px;
-  z-index: 99999;
-}
-
-.back-to-top i {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
-  background: #5a5af3;
-  color: #fff;
-  transition: all 0.4s;
-}
-
-.back-to-top i:hover {
-  background: #7272f5;
-  color: #fff;
-}
-
-/*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
 #header {
@@ -217,7 +188,6 @@ h1, h2, h3, h4, h5, h6 {
   -moz-box-shadow:    5px 5px 5px rgba(0, 0, 0, 0.153);
   box-shadow:         5px 5px 5px rgba(0, 0, 0, 0.153);
   z-index:999;
-
 }
 
 #header.header-scrolled, #header.header-inner-pages {
@@ -360,14 +330,14 @@ h1, h2, h3, h4, h5, h6 {
 .mobile-nav a {
   display: block;
   position: relative;
-  color: #434175;
+  color: green;
   padding: 10px 20px;
   font-weight: 500;
   outline: none;
 }
 
 .mobile-nav a:hover, .mobile-nav .active > a, .mobile-nav li:hover > a {
-  color: #5a5af3;
+  color: rgb(29, 77, 29);
   text-decoration: none;
 }
 
@@ -598,7 +568,7 @@ section {
   display: block;
   width: 50px;
   height: 3px;
-  background: #5a5af3;
+  background: rgb(51, 168, 51);
   bottom: 0;
   left: calc(50% - 25px);
 }
@@ -611,6 +581,9 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
+.about{
+  background-color: white;
+}
 .about .content h2 {
   font-weight: 550;
   font-size: 30px;
@@ -652,6 +625,7 @@ section {
 --------------------------------------------------------------*/
 .why-us {
   padding-top: 0;
+  background-color: white;
 }
 
 .why-us .box {
@@ -757,7 +731,7 @@ section {
   font-size: 18px;
   display: inline-block;
   background: #deddec;
-  color: #434175;
+  color: green;
   line-height: 1;
   padding: 8px 0;
   margin-right: 4px;
@@ -769,7 +743,7 @@ section {
 }
 
 #footer .social-links a:hover {
-  background: #5a5af3;
+  background: rgb(84, 151, 84);
   color: #fff;
   text-decoration: none;
 }
