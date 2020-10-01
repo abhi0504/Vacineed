@@ -63,7 +63,6 @@ const User = new mongoose.model("User", userSchema);
 const Stock = new mongoose.model("Stock", stockSchema);
 
 passport.use(User.createStrategy());
-passport.use(Stock.createStrategy());
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -112,13 +111,29 @@ app.get("/home", function(req, res){
 });
 
 app.get("/stock", function(req, res){
+
+  let count = 0;
+
+  User.find(function(err , users){
+    if(err) {
+      console.log(err);
+    }
+    else{
+      console.log(users);
+      users.forEach(function(user){
+        count +=1;
+      })
+    }
+  })
+
   Stock.find(function(err , stock){
     if(err) {
       console.log(err);
     }
     else{
       console.log(stock);
-      res.render("stock" , {stock:stock});
+      
+      res.render("stock" , {stock:stock , need:count});
     }
   })
 });
