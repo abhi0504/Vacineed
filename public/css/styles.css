@@ -427,6 +427,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
+  margin-top: 5%;
   /* height: 100vh; */
   background: white;
   border-bottom: 2px solid white;
@@ -443,7 +444,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero h1 {
   margin: 0;
-  font-size: 48px;
+  font-size: 40px;
   font-weight: 400;
   line-height: 56px;
   color: rgba(54, 54, 54, 0.884);
@@ -611,9 +612,9 @@ section {
 # About
 --------------------------------------------------------------*/
 .about .content h2 {
-  font-weight: 700;
-  font-size: 44px;
-  line-height: 50px;
+  font-weight: 550;
+  font-size: 30px;
+  line-height: 45px;
   margin-bottom: 20px;
   color: rgba(54, 54, 54, 0.884);
 }
