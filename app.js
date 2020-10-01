@@ -26,19 +26,20 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb+srv://abhishek_0504:9971749520a@cluster0-b6e9z.mongodb.net/vaccineuserDB", {useNewUrlParser: true ,useFindAndModify: false , useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://abhishek_0504:9971749520a@cluster0-b6e9z.mongodb.net/vaccineuserDB", {useNewUrlParser: true , useUnifiedTopology: true});
 mongoose.set("useCreateIndex", true);
 
 const userSchema = new mongoose.Schema ({
   email: String,
   password: String,
+  googleId: String,
+  secret: String,
   name: String,
-  number: Number,
   age: Number,
   blood: String,
   address: String,
   aadhar: String,
-  emergency: Boolean,
+  emergency: String,
   reason: String,
   disease: String,
   link: String
@@ -84,19 +85,15 @@ app.get("/home", function(req, res){
   res.render("home");
 });
 
-app.get("/register", function(req, res){
-  res.render("register");
-});
-
 app.get("/auth/google",
   passport.authenticate('google', { scope: ["profile"] })
 );
 
 app.get("/auth/google/secrets",
-  passport.authenticate('google', { failureRedirect: "/Login" }),
+  passport.authenticate('google', { failureRedirect: "/login" }),
   function(req, res) {
     // Successful authentication, redirect to secrets.
-      res.redirect("/secrets");
+    res.redirect("/secrets");
   });
 
 app.get("/login", function(req, res){
@@ -107,73 +104,22 @@ app.get("/register", function(req, res){
   res.render("register");
 });
 
-app.get("/admin", function(req, res){
-  res.render("admin");
+app.get("/secrets", function(req, res){
+  console.log(req);
+  res.render("user" , {userInfo: req.user})
 });
-
-// app.get("/secrets", function(req, res){
-//   User.find({"secret": {$ne: null}}, function(err, foundUsers){
-//     if (err){
-//       console.log(err);
-//     } else {
-//       if (foundUsers) {
-//         res.render("secrets", {usersWithSecrets: foundUsers});
-//       }
-//     }
-//   });
-// });
-
-app.get("/submit", function(req, res){
-  if (req.isAuthenticated()){
-    res.render("submit");
-  } else {
-    res.redirect("/login");
-  }
-});
-
-// app.post("/submit", function(req, res){
-//   const submittedSecret = req.body.secret;
-
-// //Once the user is authenticated and their session gets saved, their user details are saved to req.user.
-//   // console.log(req.user.id);
-
-//   User.findById(req.user.id, function(err, foundUser){
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       if (foundUser) {
-//         foundUser.secret = submittedSecret;
-//         foundUser.save(function(){
-//           res.redirect("/secrets");
-//         });
-//       }
-//     }
-//   });
-// });
 
 app.get("/logout", function(req, res){
   req.logout();
   res.redirect("/");
 });
 
-app.get("/user", function(req, res){
-  if (req.isAuthenticated()){
-    res.render("user");
-  } else {
-    res.redirect("/home");
-  }
-});
-
-
 app.post("/register", function(req, res){
 
-  console.log(req);
+  // console.log(req.body);
 
-  const user = new User({
-    email: req.body.email,
-    password: req.body.Password,
+  User.register({username: req.body.username,
     name: req.body.name,
-    number: req.body.Contact,
     age: req.body.Age,
     blood: req.body.blood_grp,
     address: req.body.address,
@@ -181,22 +127,16 @@ app.post("/register", function(req, res){
     emergency: req.body.emergency,
     reason: req.body.reason,
     disease: req.body.disease,
-    link: req.body.Signature
-  })
-  
-  user.save();
-
-  User.register({username: req.body.email}, req.body.Password, function(err, user){
+    link: req.body.Signature}, req.body.password, function(err, user){
     if (err) {
       console.log(err);
       res.redirect("/register");
     } else {
       passport.authenticate("local")(req, res, function(){
-        res.redirect("/user");
+        res.redirect("/secrets");
       });
     }
   });
-
 
 });
 
@@ -219,12 +159,6 @@ app.post("/login", function(req, res){
 
 });
 
-
-
-console.log();
-
-
-
-app.listen(3000, function() {
+app.listen(3001, function() {
   console.log("Server started on port 3000.");
 });
