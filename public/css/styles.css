@@ -237,7 +237,7 @@ h1, h2, h3, h4, h5, h6 {
 #header .logo img {
   max-height: 100px;
   padding-left: 6%;
-  
+
 }
 
 #header .container{
@@ -462,6 +462,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero h2 {
   margin: 10px 0 0 0;
   font-size: 20px;
+  text-align: center;
 }
 
 #hero ul {
