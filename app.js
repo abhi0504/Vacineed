@@ -8,6 +8,8 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
+var Request = require("request");
+const https = require('https');
 
 const app = express();
 
@@ -79,15 +81,24 @@ passport.use(new GoogleStrategy({
 ));
 
 app.get("/", function(req, res){
-  res.render("firstPage");
+  https.get("https://api.thevirustracker.com/free-api?countryTotal=IN" , function(response)
+  {
+  response.on("data" , function(data)
+  {
+      var apidata = JSON.parse(data);
+      const deaths = apidata.countrydata[0].total_deaths;
+      const treated = apidata.countrydata[0].total_recovered;
+      const infected = apidata.countrydata[0].total_cases;
+      const newcases = apidata.countrydata[0].total_new_cases_today;
+
+
+      res.render("firstPage" , { deaths:deaths , treated:treated , infected:infected , newcases:newcases})
+  })
+  });
 });
 
 app.get("/home", function(req, res){
   res.render("home");
-});
-
-app.get("/firstPage", function(req, res){
-  res.render("firstPage");
 });
 
 app.get("/admin", function(req, res){
@@ -123,6 +134,7 @@ app.get("/logout", function(req, res){
   req.logout();
   res.redirect("/");
 });
+
 
 app.post("/register", function(req, res){
 
