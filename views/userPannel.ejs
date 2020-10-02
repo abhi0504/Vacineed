@@ -1,0 +1,48 @@
+<%- include('partials/header') %>
+
+  <body class="bg-light">
+    <nav class="navbar fixed-top navbar-dark bg-dark">
+  <a class="navbar-brand mr-auto mr-lg-0" href="#">VACINEED USER DASHBOARD</a>
+  <div style="text-align: right;" class="col-9"><a class="btn btn-light btn-lg" href="/logout" role="button">Log Out</a></div>
+  <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+  </button>
+</nav>
+
+<div class="nav-scroller bg-white shadow-sm">
+  <nav class="nav nav-underline">
+    <a class="nav-link" href="/user/<%=userInfo._id%>" target="_blank">Your Info</a>
+    <a class="nav-link" href="">Edit Info</a>
+
+  </nav>
+</div>
+
+<main role="main" class="container">
+  <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+    <div class="lh-100">
+      <h4 class="mb-0 text-white lh-100">Welcome <%=userInfo.name%></h4>
+    </div>
+  </div>
+
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h5>This is an USER dashboard </h5>
+    <ul>
+        <li>
+            Your Token No. : <b><%=userInfo._id%></b> 
+        </li>
+        <li>
+            Your position in queue : <b>2</b>
+        </li>
+        <li>
+            Request status : <b><%=userInfo.status%></b>
+        </li>
+    </ul>
+    <p>
+        You can edit your information by clicking on above <b>Edit Info</b> navigation button
+    </p>
+
+  </div>
+
+  
+</main>
+
+<%- include('partials/footer') %>

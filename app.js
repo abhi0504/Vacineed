@@ -10,7 +10,8 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 var Request = require("request");
 const https = require('https');
-const alert = require('alert')
+const alert = require('alert');
+const { userInfo } = require('os');
 
 const app = express();
 
@@ -90,6 +91,9 @@ passport.use(new GoogleStrategy({
   }
 ));
 
+
+let tempUser = {} ;
+
 app.get("/", function(req, res){
   https.get("https://api.thevirustracker.com/free-api?countryTotal=IN" , function(response)
   {
@@ -107,8 +111,21 @@ app.get("/", function(req, res){
   });
 });
 
-app.get("/home", function(req, res){
-  res.render("home");
+app.get("/userPannel", function(req, res){
+  res.render("userPannel" , {userInfo : tempUser});
+});
+
+app.get("/user/:id", function(req, res){
+  let reqUser = req.params.id;
+  User.find( {_id : reqUser } , function(err , user){
+    if(err) {
+      console.log(err);
+    }
+    else{
+      console.log(user);
+      res.render("user" , {userInfo:user[0]});
+    }
+  })
 });
 
 app.get("/userInfo/:id", function(req, res){
@@ -252,7 +269,7 @@ app.post("/register", function(req, res){
       res.redirect("/register");
     } else {
       passport.authenticate("local")(req, res, function(){
-       res.redirect("/secrets");
+       res.render("userPannel" , {userInfo:user});
       });
     }
   });
@@ -266,6 +283,8 @@ app.post("/login", function(req, res){
     password: req.body.password
   });
 
+  const email = req.body.username
+
   req.login(user, function(err){
     if (err) {
       console.log(err);
@@ -277,7 +296,16 @@ app.post("/login", function(req, res){
         }
         else
         {
-          res.redirect("/secrets");
+          User.find( {username : email } , function(err , user){
+            if(err) {
+              console.log(err);
+            }
+            else{
+              console.log(user);
+              tempUser = user[0];
+              res.redirect("/userPannel");
+            }
+          })
         }
       });
     }
