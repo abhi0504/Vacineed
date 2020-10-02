@@ -19,7 +19,7 @@ body {
     padding-left: 1rem;
     overflow-y: auto;
     visibility: hidden;
-    background-color: #343a40;
+    background-color: #403534;
     transition: visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
     transition: transform .3s ease-in-out, visibility .3s ease-in-out;
     transition: transform .3s ease-in-out, visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;

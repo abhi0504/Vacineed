@@ -35,3 +35,7 @@ button #emergency_request{
 #reason, #doc{
     font-size: 15px;
 }
+
+.cbcb {
+    background: #3f729b;
+  }
