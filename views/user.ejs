@@ -3,7 +3,7 @@
 <div class="container mt-8">
     <div class="user_header">
     <h4 style="text-align: left;" id="token_no" ><b>Token No. - <%=userInfo._id%></b></h4>
-    <h6 style="text-align: right;" class="col-8"><a href="firstPage">Back to homepage <i class="fas fa-arrow-right"></i></a></h6>
+    <h6 style="text-align: right;" class="col-8"><a href="/">Back to homepage <i class="fas fa-arrow-right"></i></a></h6>
     </div>
     <br>
     <br>
@@ -19,7 +19,7 @@
               </div>
 
               <div class="userdetail">
-                <h5><b>Contact Number</b> : <%=userInfo.Contact%></h5>
+                <h5><b>Contact Number</b> : <%=userInfo.contact%></h5>
                 <hr>
               </div>
 
@@ -51,13 +51,7 @@
               <div class="userdetail">
                 <h5><b>Adhaar card number</b> : <%=userInfo.aadhar%></h5>
                 <hr>
-              </div>
-
-              <div class="userdetail">
-                <h5><b>Signature </b>:<%=userInfo.link%> </h5>
-                <hr>
-              </div>
-              
+              </div>              
               <br>
               <br>
 
@@ -72,21 +66,6 @@
                     file.style.display="block"
                 }
             </script>
-
-            <button id="emergency_request" value="request" class="btn btn-success btn-lg" onclick="ShowHideDiv(this)">Send emergency request</button>
-            <hr>
-            <div id="reason" style="display: none" class="form-group">
-                Give Reason
-                <textarea type="text" class="form-control" rows="5"></textarea>
-            </div>
-
-            <div id="doc" style="display: none" class="form-group">
-              Attach files
-              <input type="file" class="form-control" rows="5"/>
-          </div>
-
-          <button type="submit" class="btn btn-dark btn-lg">Submit</button>
-
           </div>
         </div>
       </div>

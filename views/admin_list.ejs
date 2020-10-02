@@ -13,7 +13,7 @@
     <a class="nav-link" href="/admin">Dashboard</a>
     <a class="nav-link" href="/users_list">Users List</a>
     <a class="nav-link" href="/stock">Available Stock</a>
-    <a class="nav-link" href="/admin_list">Admin List</a>
+    <a class="nav-link" href="/admin_list">Emergency Users List</a>
 
   </nav>
 </div>
@@ -33,23 +33,19 @@
           <th>Token No.</th>
           <th>Full Name</th>
           <th>Adhaar card Number</th>
-          <th>Medical Document</th>
         </tr>
       </thead>
       <tbody>
+        <% users.forEach(function(user){ %>
           <tr>
-            <td><a href="#">12345</a></td>
-            <td>abc</td>
-            <td>9999 9999 9999</td>
-            <th>Medical Document</th>
+            <td><a href="/userInfo/<%=user._id%>"><%=user._id%></a></td>
+            <td><%=user.name%></td>
+            <td><%=user.aadhar%></td>
           </tr>
+       <% }) %>
 
       </tbody>
     </table>
-
-    <small class="d-block text-right mt-3">
-      <a href="#">Add User</a>
-    </small>
   </div>
 
   

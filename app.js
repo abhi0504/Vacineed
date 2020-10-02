@@ -36,7 +36,6 @@ const userSchema = new mongoose.Schema ({
   email: String,
   password: String,
   googleId: String,
-  secret: String,
   name: String,
   age: Number,
   blood: String,
@@ -160,7 +159,15 @@ app.get("/stock", function(req, res){
 });
 
 app.get("/admin_list", function(req, res){
-  res.render("admin_list");
+  User.find( {emergency : "yes" } , function(err , user){
+    if(err) {
+      console.log(err);
+    }
+    else{
+      console.log(user);
+      res.render("admin_list" , {users:user});
+    }
+  })
 });
 
 app.get("/users_list", function(req, res){
@@ -212,7 +219,6 @@ app.get("/register", function(req, res){
 });
 
 app.get("/secrets", function(req, res){
-  console.log(req);
   res.render("user" , {userInfo: req.user})
 });
 
@@ -226,7 +232,8 @@ app.post("/register", function(req, res){
 
   console.log(req.body);
 
-  User.register({username: req.body.username,
+  User.register({
+    username: req.body.username,
     name: req.body.name,
     age: req.body.Age,
     blood: req.body.blood_grp,
@@ -236,7 +243,8 @@ app.post("/register", function(req, res){
     reason: req.body.reason,
     disease: req.body.disease,
     link: req.body.Signature,
-    contact: req.body.contact}, req.body.password, function(err, user){
+    contact: req.body.contact
+    }, req.body.password, function(err, user){
     if (err) {
       console.log(err);
       res.redirect("/register");
