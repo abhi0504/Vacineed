@@ -45,7 +45,8 @@ const userSchema = new mongoose.Schema ({
   reason: String,
   disease: String,
   link: String,
-  contact: Number
+  contact: Number,
+  status: String
 });
 
 const stockSchema = new mongoose.Schema ({
@@ -243,7 +244,8 @@ app.post("/register", function(req, res){
     reason: req.body.reason,
     disease: req.body.disease,
     link: req.body.Signature,
-    contact: req.body.contact
+    contact: req.body.contact,
+    status: "pending"
     }, req.body.password, function(err, user){
     if (err) {
       console.log(err);

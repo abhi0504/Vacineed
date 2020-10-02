@@ -33,6 +33,7 @@
           <th>Token No.</th>
           <th>Full Name</th>
           <th>Adhaar card Number</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
@@ -41,6 +42,7 @@
             <td><a href="/userInfo/<%=user._id%>"><%=user._id%></a></td>
             <td><%=user.name%></td>
             <td><%=user.aadhar%></td>
+            <td><%=user.status%></td>
           </tr>
        <% }) %>
 
