@@ -10,6 +10,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 var Request = require("request");
 const https = require('https');
+const alert = require('alert')
 
 const app = express();
 
@@ -110,6 +111,20 @@ app.get("/home", function(req, res){
   res.render("home");
 });
 
+app.get("/userInfo/:id", function(req, res){
+  console.log(req.params.id);
+  let reqUser = req.params.id;
+  User.find( {_id : reqUser } , function(err , user){
+    if(err) {
+      console.log(err);
+    }
+    else{
+      console.log(user);
+      res.render("user" , {userInfo:user[0]});
+    }
+  })
+});
+
 app.get("/stock", function(req, res){
 
   let count = 0;
@@ -132,10 +147,16 @@ app.get("/stock", function(req, res){
     }
     else{
       console.log(stock);
-      
-      res.render("stock" , {stock:stock , need:count});
-    }
-  })
+
+      if (req.isAuthenticated()){
+        res.render("stock" , {stock:stock , need:count});
+      } 
+      else {
+        alert("Oops! plz login.");
+        res.redirect("/login"); 
+      }
+  }}
+  )
 });
 
 app.get("/admin_list", function(req, res){
@@ -143,19 +164,31 @@ app.get("/admin_list", function(req, res){
 });
 
 app.get("/users_list", function(req, res){
+
   User.find(function(err , users){
     if(err) {
       console.log(err);
     }
     else{
       // console.log(users);
-      res.render("users_list" , {users:users});
+      if (req.isAuthenticated()){
+        res.render("users_list" , {users:users});
+      } else {
+        alert("Oops! plz login.");
+        res.redirect("/login");
+      }
     }
   })
 });
 
 app.get("/admin", function(req, res){
-  res.render("admin");
+
+  if (req.isAuthenticated()){
+    res.render("admin");
+  } else {
+    alert("Oops! plz login.");
+    res.redirect("/login");
+  }
 });
 
 
@@ -245,3 +278,4 @@ app.post("/login", function(req, res){
 app.listen(3001, function() {
   console.log("Server started on port 3000.");
 });
+
