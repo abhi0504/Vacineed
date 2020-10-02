@@ -148,7 +148,7 @@ app.get("/users_list", function(req, res){
       console.log(err);
     }
     else{
-      console.log(users);
+      // console.log(users);
       res.render("users_list" , {users:users});
     }
   })
@@ -191,7 +191,7 @@ app.get("/logout", function(req, res){
 
 app.post("/register", function(req, res){
 
-  // console.log(req.body);
+  console.log(req.body);
 
   User.register({username: req.body.username,
     name: req.body.name,

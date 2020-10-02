@@ -755,3 +755,13 @@ section {
   color: #fff;
   text-decoration: none;
 }
+
+.covid {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.chat {
+  margin-left: 467px;
+  margin-right: 467px;
+}
