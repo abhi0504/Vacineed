@@ -789,3 +789,9 @@ body{
   font-size: 3rem;
 }
 
+.llb{
+  background-image: url("https://i.ibb.co/9b7Twhw/image1.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
