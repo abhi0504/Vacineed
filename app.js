@@ -232,17 +232,92 @@ app.get("/login", function(req, res){
   res.render("login");
 });
 
-app.get("/register", function(req, res){
-  res.render("register");
+app.get("/button", function(req, res){
+  console.log(req);
 });
 
-app.get("/secrets", function(req, res){
-  res.render("user" , {userInfo: req.user})
+app.get("/register", function(req, res){
+  res.render("register");
 });
 
 app.get("/logout", function(req, res){
   req.logout();
   res.redirect("/");
+});
+
+app.get("/done/:id", function(req, res){
+  const reqUserId = req.params.id;
+  User.findOneAndUpdate( {_id : reqUserId } , {status : "done"} , function(err , user){
+    if(err) {
+      // console.log(err);
+    }
+    else{
+      // console.log(user);
+      // res.render("user" , {userInfo:user[0]});
+    }
+  })
+
+  User.find( {emergency : "no"} ,function(err , users){
+    if(err) {
+      // console.log(err);
+    }
+    else{
+      // console.log(users);
+      res.render("users_list" , {users: users})
+    }
+  })
+ // console.log(req.params.id);
+ 
+});
+
+app.get("/pending/:id", function(req, res){
+  const reqUserId = req.params.id;
+  User.findOneAndUpdate( {_id : reqUserId } , {status : "pending"} , function(err , user){
+    if(err) {
+      // console.log(err);
+    }
+    else{
+      // console.log(user);
+      // res.render("user" , {userInfo:user[0]});
+    }
+  })
+
+  User.find( {emergency : "no"} ,function(err , users){
+    if(err) {
+      // console.log(err);
+    }
+    else{
+      // console.log(users);
+      res.render("users_list" , {users: users})
+    }
+  })
+ // console.log(req.params.id);
+ 
+});
+
+app.get("/cancel/:id", function(req, res){
+  const reqUserId = req.params.id;
+  User.findOneAndDelete( {_id : reqUserId } ,function(err , user){
+    if(err) {
+      // console.log(err);
+    }
+    else{
+      // console.log(user);
+      // res.render("user" , {userInfo:user[0]});
+    }
+  })
+
+  User.find({emergency : "no"} ,function(err , users){
+    if(err) {
+      // console.log(err);
+    }
+    else{
+      // console.log(users);
+      res.render("users_list" , {users: users})
+    }
+  })
+ // console.log(req.params.id);
+ 
 });
 
 

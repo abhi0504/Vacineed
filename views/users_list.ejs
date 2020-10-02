@@ -4,8 +4,6 @@
     <nav class="navbar  fixed-top navbar-dark bg-dark">
   <a class="navbar-brand mr-auto mr-lg-0" href="#">VACINEED ADMIN DASHBOARD</a>
   <div style="text-align: right;" class="col-9"><a class="btn btn-light btn-lg" href="/logout" role="button">Log Out</a></div>
-  <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-  </button>
 </nav>
 
 <div class="nav-scroller bg-white shadow-sm">
@@ -43,6 +41,10 @@
               <td><%=user.name%></td>
               <td><%=user.aadhar%></td>
               <td><%=user.status%></td>
+              <td><a class="btn btn-success" href="/done/<%=user._id%>" role="button">Done</a></td>
+              <td><a class="btn btn-warning" href="/pending/<%=user._id%>" role="button">Pending</a></td>
+              <td><a class="btn btn-danger" href="/cancel/<%=user._id%>" role="button">Cancel</a></td>
+              </td>
             </tr>
          <% }) %>
 
