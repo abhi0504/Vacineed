@@ -51,9 +51,14 @@
               <div class="userdetail">
                 <h5><b>Adhaar card number</b> : <%=userInfo.aadhar%></h5>
                 <hr>
-              </div>              
-              <br>
-              <br>
+              </div>         
+              
+              <% if(userInfo.emergency == "yes") %>
+                  <% { %> <div class="userdetail">
+                    <h5><b>Emergency Reason</b> : <%=userInfo.reason%></h5>
+                    <hr>
+                  </div> <% } %>
+
 
               <!-- <button id="emergency_request" class="btn btn-success btn-lg">Send Emergency Request</button> -->
 

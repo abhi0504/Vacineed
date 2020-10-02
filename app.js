@@ -172,7 +172,7 @@ app.get("/admin_list", function(req, res){
 
 app.get("/users_list", function(req, res){
 
-  User.find(function(err , users){
+  User.find( { emergency: "no" } ,function(err , users){
     if(err) {
       console.log(err);
     }
