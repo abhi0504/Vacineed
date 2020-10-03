@@ -372,7 +372,7 @@ app.post("/login", function(req, res){
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, function(){
-        if(req.body.username === "admin@123.com" || req.body.username === "chehakagrawal01@gmail.com")
+        if(req.body.username === "admin@123.com")
         {
           res.redirect("/admin")
         }
