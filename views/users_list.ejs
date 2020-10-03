@@ -3,7 +3,7 @@
   <body class="bg-light">
     <nav class="navbar  fixed-top navbar-dark bg-dark">
   <a class="navbar-brand mr-auto mr-lg-0" href="#">VACCINEED ADMIN DASHBOARD</a>
-  <div style="text-align: right;"><a class="btn btn-light btn-lg" href="/logout" role="button">Log Out</a></div>
+  <div style="text-align: right;"><a class="btn btn-light" href="/logout" role="button">Log Out</a></div>
 </nav>
 
 <div class="nav-scroller bg-white shadow-sm">
@@ -37,7 +37,7 @@
         <tbody>
           <% users.forEach(function(user){ %>
             <tr>
-              <td><a href="/userInfo/<%=user._id%>"><%=user._id%></a></td>
+              <td><a href="/userInfo/<%=user._id%>" target="blank"><%=user._id%></a></td>
               <td><%=user.name%></td>
               <td><%=user.aadhar%></td>
               <td><%=user.status%></td>

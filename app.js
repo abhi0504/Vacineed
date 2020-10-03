@@ -325,6 +325,13 @@ app.post("/register", function(req, res){
 
   console.log(req.body);
 
+  let Ustatus = "pending";
+
+  if(req.body.emergency === "yes")
+  {
+    Ustatus = "emergency"
+  }
+
   User.register({
     username: req.body.username,
     name: req.body.name,
@@ -337,7 +344,7 @@ app.post("/register", function(req, res){
     disease: req.body.disease,
     link: req.body.Signature,
     contact: req.body.contact,
-    status: "pending"
+    status: Ustatus,
     }, req.body.password, function(err, user){
     if (err) {
       console.log(err);
