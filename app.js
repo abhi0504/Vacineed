@@ -12,6 +12,8 @@ var Request = require("request");
 const https = require('https');
 const alert = require('alert');
 const { userInfo } = require('os');
+const axios = require('axios');
+
 
 const app = express();
 
@@ -95,20 +97,25 @@ passport.use(new GoogleStrategy({
 let tempUser = {} ;
 
 app.get("/", function(req, res){
-  https.get("https://api.thevirustracker.com/free-api?countryTotal=IN" , function(response)
-  {
-  response.on("data" , function(data)
-  {
-      var apidata = JSON.parse(data);
-      const deaths = apidata.countrydata[0].total_deaths;
-      const treated = apidata.countrydata[0].total_recovered;
-      const infected = apidata.countrydata[0].total_cases;
-      const newcases = apidata.countrydata[0].total_new_cases_today;
+
+  console.log("Using This");
+  axios.get('https://api.rootnet.in/covid19-in/stats/latest')
+  .then(response => {
+    console.log(response.data.data.summary);
+     const DATA = response.data.data.summary;
+      const deaths = DATA.deaths;
+      const treated = DATA.discharged;
+      const infected = DATA.total;
+      const newcases = 30125;
 
 
       res.render("firstPage" , { deaths:deaths , treated:treated , infected:infected , newcases:newcases})
   })
+  .catch(error => {
+    console.log(error);
   });
+
+
 });
 
 app.get("/userPannel", function(req, res){
@@ -395,12 +402,12 @@ app.post("/login", function(req, res){
 
 });
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3000;
-}
+// let port = process.env.PORT;
+// if (port == null || port == "") {
+//   port = 3000;
+// }
 
-app.listen(port, function() {
+app.listen(2000, function() {
   console.log("Server started");
 });
 
